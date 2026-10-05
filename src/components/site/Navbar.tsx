@@ -3,14 +3,14 @@ import { ArrowRight, Menu, X } from "lucide-react";
 import logo from "@/assets/navbar-logo.png";
 
 const links = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Ministry", href: "#focus" },
-  { label: "Sermons", href: "#sermons" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Prayer", href: "#prayer-request" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/about" },
+  { label: "Ministry", href: "/#focus" },
+  { label: "Sermons", href: "/#sermons" },
+  { label: "Gallery", href: "/#gallery" },
+  { label: "Testimonials", href: "/#testimonials" },
+  { label: "Prayer", href: "/#prayer-request" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function Navbar() {
