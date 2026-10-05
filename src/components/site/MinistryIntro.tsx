@@ -15,7 +15,7 @@ const stats = [
   },
   {
     icon: HandHeart,
-    number: "Kanmalai Trust",
+    number: "Kanmalai Charitable Trust",
     title: "Community Outreach",
     sub: "Delivering real help to children, the elderly, and those in distress",
   },
@@ -102,9 +102,10 @@ export function MinistryIntro() {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-4 pt-2 border-t border-slate/10">
-              <a href="#focus" className="btn-gold">
-                Ministry Pillars <ArrowRight className="h-4 w-4" />
+              <a href="/about" className="btn-gold">
+                Learn More <ArrowRight className="h-4 w-4" />
               </a>
+
               <a href="#prayer-request" className="btn-outline-navy">
                 Request Personal Prayer
               </a>
@@ -165,6 +166,6 @@ export function MinistryIntro() {
           </cite>
         </div>
       </div>
-    </section>
+    </section >
   );
 }
