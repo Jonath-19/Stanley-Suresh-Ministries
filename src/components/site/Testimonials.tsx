@@ -28,7 +28,7 @@ interface Testimony {
 const testimonies: Testimony[] = [
   {
     id: "t1",
-    name: "Bro. Samuel Rajendran",
+    name: "Samuel Rajendran",
     location: "Chennai, Tamil Nadu",
     category: "deliverance",
     categoryLabel: "Deliverance",
@@ -40,61 +40,61 @@ const testimonies: Testimony[] = [
   },
   {
     id: "t2",
-    name: "Sis. Hannah Mary",
-    location: "Coimbatore, Tamil Nadu",
-    category: "healing",
+    name: "Priya & Vinoth",
+    location: "Chennai, Tamil Nadu",
+    category: "family",
     categoryLabel: "Divine Healing",
-    title: "Healed from Chronic Pain After Online Prayer",
+    title: "Blessed with the Gift of a Child",
     story:
-      "Doctors had advised long-term medication with little guarantee for recurring internal pain. I submitted an urgent prayer request through the website and joined the Friday live prayer stream. When Pastor prayed with deep burden for the sick, the fire of God touched me. Subsequent clinical scans showed complete normality!",
-    date: "July 2026",
+      "Priya and Vinoth had been waiting for many years for the blessing of a child. They came in person to the prayer meetings and received prayer from Pastor Stanley Suresh, continuing to trust God despite the long wait. Today, they have received the precious gift of a child, and their long-awaited prayer has been answered. We give all glory and thanks to God for His faithfulness and for this wonderful blessing in their family.",
+    date: "September 2026",
     verified: true,
   },
   {
     id: "t3",
-    name: "Bro. David & Sis. Priya",
-    location: "Bangalore, Karnataka",
-    category: "family",
-    categoryLabel: "Family Restoration",
-    title: "Broken Marriage Restored by God's Grace",
+    name: "Saranya",
+    location: "Coimbatore, Tamil Nadu",
+    category: "healing",
+    categoryLabel: "Divine Healing",
+    title: "Freedom from Frequent Seizures",
     story:
-      "Our marriage was on the verge of legal separation due to constant strife and misunderstandings. Through pastoral counseling and regular intercession from Stanley Suresh Ministries, God softened our hearts, broke the spirit of bitterness, and rekindled our love and dedication to Christ.",
+      "From birth, my child suffered from frequent seizures, sometimes having seizures nearly 10 times a day. I reached out to Pastor Stanley Suresh for prayer, and he prayed for my child and our family. After prayer, the seizures gradually reduced and have now completely stopped. My child has since joined a special school and is slowly learning to walk and speak. I thank God for His grace and for the wonderful changes He has brought into my child's life.",
     date: "September 2026",
     verified: true,
   },
   {
     id: "t4",
-    name: "Sis. Mercy Deborah",
-    location: "Singapore",
+    name: "Priya",
+    location: "Canada",
     category: "breakthrough",
     categoryLabel: "Miracle Blessing",
-    title: "Blessed with a Miracle Child After 6 Years",
+    title: "First Selected for an Internship",
     story:
-      "After six years of marriage and repeated medical disappointments, we reached out to the ministry. Pastor Stanley Suresh stood in prayer agreement with us, claiming Psalm 113:9. God heard our cry and blessed us with a healthy baby boy. What man deemed impossible, God made possible!",
-    date: "June 2026",
+      "I was going through a period of uncertainty regarding my internship and was waiting for confirmation after my training. I received prayer from Pastor Stanley Suresh, and I trusted God for the opportunity. I was later told that only 30 people would be selected, and to my great joy, I was the first person selected. I was filled with happiness and immediately wanted to thank God for answering my prayer. I give all glory to the Lord for opening this opportunity for me.",
+    date: "September 2026",
     verified: true,
   },
   {
     id: "t5",
-    name: "Bro. Paul Varghese",
-    location: "Madurai, Tamil Nadu",
-    category: "deliverance",
+    name: "J. Nesamani Sonja",
+    location: "Uttar Pradesh, India",
+    category: "healing",
     categoryLabel: "Deliverance",
-    title: "Completely Liberated from 10 Years of Addiction",
+    title: "Delivered from Severe Stomach Distress",
     story:
-      "I was trapped in deep addictions that destroyed my relationships and finances. When I attended the monthly miracle gathering, the power of God shook my life. I haven't touched any substance since that blessed day. Jesus truly sets the captive free!",
-    date: "May 2026",
+      "Last week, I suffered from severe stomach discomfort, excessive gas, bloating and continuous belching for three days, making it difficult for me to eat or even breathe comfortably. I reached out to Pastor Stanley Suresh for prayer, and he prayed for me and instructed me to take oil and pray. During the prayer, I experienced vomiting, followed by a great sense of relief. By the next day, I was completely normal and able to eat regular food again. I give all glory to Jesus for His healing and deliverance.",
+    date: "September 2026",
     verified: true,
   },
   {
     id: "t6",
-    name: "Sis. Elizabeth Grace",
-    location: "London, United Kingdom",
-    category: "breakthrough",
+    name: "Valarmathi",
+    location: "Manipal",
+    category: "healing",
     categoryLabel: "Spiritual Breakthrough",
-    title: "Supernatural Breakthrough Across Borders",
+    title: " Answered Prayer for My Husband's Health",
     story:
-      "Even from the UK, joining the online prayer ministry became our family's spiritual fortress. During an intense season of professional uncertainty, Pastor prayed with prophetic faith. Within days, closed doors opened and God granted an exceptional breakthrough beyond all expectations.",
+      "During my husband's medical check-up, his pulse rate was found to be low at around 52, which caused us great concern. I shared this with Pastor Stanley Suresh, and he prayed for my husband and told me, “Don't worry, sister. You will testify soon.” At the next check-up, his pulse rate had increased to 72, and his echo, ECG and other tests were reported to be normal. The doctor assured us that there was no problem and told us not to be afraid. I thank God for His grace and for answering our prayer.",
     date: "September 2026",
     verified: true,
   },
@@ -208,8 +208,8 @@ export function Testimonials() {
                 type="button"
                 onClick={() => setFilter(f.key)}
                 className={`cursor-pointer rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-all ${filter === f.key
-                    ? "bg-navy text-gold shadow-md ring-1 ring-gold/40"
-                    : "border border-slate/15 bg-white text-slate hover:bg-white/80 hover:text-navy"
+                  ? "bg-navy text-gold shadow-md ring-1 ring-gold/40"
+                  : "border border-slate/15 bg-white text-slate hover:bg-white/80 hover:text-navy"
                   }`}
               >
                 {f.label}
