@@ -1,50 +1,60 @@
-```tsx
 import { useState } from "react";
-import { ArrowRight, Folder, Image, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Folder, Image, X } from "lucide-react";
 
 type GalleryCategory = {
   name: string;
   description: string;
+  photos: string[];
 };
 
 const categories: GalleryCategory[] = [
   {
     name: "Adambakkam",
     description: "Photos from ministry meetings and gatherings in Adambakkam.",
+    photos: [],
   },
   {
     name: "Baptism",
     description: "Moments from baptism services and celebrations.",
+    photos: [],
   },
   {
     name: "Community Outreach",
     description: "Moments from community outreach and ministry activities.",
+    photos: [],
   },
   {
     name: "Cuddalore",
     description: "Photos from ministry meetings and outreach in Cuddalore.",
+    photos: [],
   },
   {
     name: "Other Meetings",
     description: "Special meetings, gatherings, conventions, and ministry events.",
+    photos: [],
   },
   {
     name: "Tirunelveli",
     description: "Photos from ministry meetings and gatherings in Tirunelveli.",
+    photos: [],
   },
   {
     name: "Trichy",
     description: "Photos from ministry meetings and gatherings in Trichy.",
+    photos: [],
   },
   {
     name: "Vellore",
     description: "Photos from ministry meetings and gatherings in Vellore.",
+    photos: [],
   },
 ];
 
 export function Gallery() {
   const [selectedCategory, setSelectedCategory] =
     useState<GalleryCategory | null>(null);
+
+  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
 
   return (
     <section
@@ -87,7 +97,8 @@ export function Gallery() {
                 </div>
 
                 <span className="rounded-full border border-slate/15 bg-soft-blue/30 px-3 py-1 text-[11px] font-semibold text-navy">
-                  0 Photos
+                  {category.photos.length}{" "}
+                  {category.photos.length === 1 ? "Photo" : "Photos"}
                 </span>
               </div>
 
@@ -117,10 +128,13 @@ export function Gallery() {
         {selectedCategory && (
           <div
             className="fixed inset-0 z-[100] flex items-center justify-center bg-deep/90 p-4 backdrop-blur-md"
-            onClick={() => setSelectedCategory(null)}
+            onClick={() => {
+              setSelectedCategory(null);
+              setSelectedPhoto(null);
+            }}
           >
             <div
-              className="relative w-full max-w-5xl overflow-hidden rounded-2xl border border-gold/40 bg-navy shadow-2xl"
+              className="relative max-h-[90vh] w-full max-w-6xl overflow-hidden rounded-2xl border border-gold/40 bg-navy shadow-2xl"
               onClick={(event) => event.stopPropagation()}
             >
               {/* Popup Header */}
@@ -133,11 +147,21 @@ export function Gallery() {
                   <h3 className="mt-1 text-2xl font-semibold text-ivory sm:text-3xl">
                     {selectedCategory.name}
                   </h3>
+
+                  <p className="mt-1 text-sm text-ivory/60">
+                    {selectedCategory.photos.length}{" "}
+                    {selectedCategory.photos.length === 1
+                      ? "photo"
+                      : "photos"}
+                  </p>
                 </div>
 
                 <button
                   type="button"
-                  onClick={() => setSelectedCategory(null)}
+                  onClick={() => {
+                    setSelectedCategory(null);
+                    setSelectedPhoto(null);
+                  }}
                   className="grid h-10 w-10 cursor-pointer place-items-center rounded-full border border-ivory/20 text-ivory transition-colors hover:border-gold hover:text-gold"
                   aria-label="Close gallery"
                 >
@@ -145,28 +169,75 @@ export function Gallery() {
                 </button>
               </div>
 
-              {/* Empty Gallery */}
-              <div className="p-6 sm:p-7">
-                <div className="flex min-h-[280px] flex-col items-center justify-center rounded-xl border border-dashed border-gold/30 bg-deep/50 px-6 text-center">
-                  <div className="grid h-16 w-16 place-items-center rounded-full border border-gold/60 text-gold">
-                    <Image className="h-7 w-7" />
+              {/* Photos */}
+              <div className="max-h-[calc(90vh-120px)] overflow-y-auto p-6 sm:p-7">
+                {selectedCategory.photos.length > 0 ? (
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {selectedCategory.photos.map((photo, index) => (
+                      <button
+                        key={photo}
+                        type="button"
+                        onClick={() => setSelectedPhoto(photo)}
+                        className="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-xl border border-ivory/10 bg-deep"
+                      >
+                        <img
+                          src={photo}
+                          alt={`${selectedCategory.name} ministry photo ${
+                            index + 1
+                          }`}
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          loading="lazy"
+                        />
+
+                        <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
+                      </button>
+                    ))}
                   </div>
+                ) : (
+                  <div className="flex min-h-[280px] flex-col items-center justify-center rounded-xl border border-dashed border-gold/30 bg-deep/50 px-6 text-center">
+                    <div className="grid h-16 w-16 place-items-center rounded-full border border-gold/60 text-gold">
+                      <Image className="h-7 w-7" />
+                    </div>
 
-                  <h4 className="mt-6 text-xl font-semibold text-ivory">
-                    Photos Coming Soon
-                  </h4>
+                    <h4 className="mt-6 text-xl font-semibold text-ivory">
+                      Photos Coming Soon
+                    </h4>
 
-                  <p className="mt-2 max-w-md text-sm leading-relaxed text-ivory/60">
-                    Photos from the {selectedCategory.name} ministry
-                    activities will appear here.
-                  </p>
-                </div>
+                    <p className="mt-2 max-w-md text-sm leading-relaxed text-ivory/60">
+                      Photos from the {selectedCategory.name} ministry
+                      activities will appear here.
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
+          </div>
+        )}
+
+        {/* Full-size Photo Viewer */}
+        {selectedPhoto && (
+          <div
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 p-4"
+            onClick={() => setSelectedPhoto(null)}
+          >
+            <button
+              type="button"
+              onClick={() => setSelectedPhoto(null)}
+              className="absolute right-5 top-5 z-10 grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-white/30 bg-black/50 text-white transition-colors hover:border-gold hover:text-gold"
+              aria-label="Close photo"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            <img
+              src={selectedPhoto}
+              alt="Ministry gallery"
+              className="max-h-[90vh] max-w-[95vw] rounded-lg object-contain shadow-2xl"
+              onClick={(event) => event.stopPropagation()}
+            />
           </div>
         )}
       </div>
     </section>
   );
 }
-```
