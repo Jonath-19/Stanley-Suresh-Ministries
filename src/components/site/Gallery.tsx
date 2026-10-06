@@ -9,10 +9,14 @@ type GalleryCategory = {
 
 const categories: GalleryCategory[] = [
   {
-    name: "Adambakkam",
-    description: "Photos from ministry meetings and gatherings in Adambakkam.",
-    photos: [],
-  },
+  name: "Adambakkam",
+  description: "Photos from ministry meetings and gatherings in Adambakkam.",
+  photos: [
+    "/gallery/adambakkam/20221015_105346.jpg",
+    "/gallery/adambakkam/20221015_105352.jpg",
+    "/gallery/adambakkam/20221015_105447.jpg",
+  ],
+},
   {
     name: "Baptism",
     description: "Moments from baptism services and celebrations.",
