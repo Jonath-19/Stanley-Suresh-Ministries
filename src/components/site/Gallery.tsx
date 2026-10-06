@@ -55,10 +55,13 @@ const categories: GalleryCategory[] = [
   ],
 },
   {
-    name: "Tirunelveli",
-    description: "Photos from ministry meetings and gatherings in Tirunelveli.",
-    photos: [],
-  },
+  name: "Tirunelveli",
+  description: "Photos from ministry meetings and gatherings in Tirunelveli.",
+  photos: [
+    "/gallery/tirunelveli/IMG_4368.JPG",
+    "/gallery/tirunelveli/IMG_4378.JPG",
+  ],
+},
   {
     name: "Trichy",
     description: "Photos from ministry meetings and gatherings in Trichy.",
