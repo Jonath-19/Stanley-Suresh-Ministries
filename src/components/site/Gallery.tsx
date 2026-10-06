@@ -44,10 +44,16 @@ const categories: GalleryCategory[] = [
   ],
 },
   {
-    name: "Other Meetings",
-    description: "Special meetings, gatherings, conventions, and ministry events.",
-    photos: [],
-  },
+  name: "Other Meetings",
+  description: "Special meetings, gatherings, conventions, and ministry events.",
+  photos: [
+    "/gallery/other-meetings/20231227_193701.jpg",
+    "/gallery/other-meetings/20260403_124045.jpg",
+    "/gallery/other-meetings/20260403_124052.jpg",
+    "/gallery/other-meetings/20260417_193622.jpg",
+    "/gallery/other-meetings/20260417_193629.jpg",
+  ],
+},
   {
     name: "Tirunelveli",
     description: "Photos from ministry meetings and gatherings in Tirunelveli.",
