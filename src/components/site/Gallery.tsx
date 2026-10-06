@@ -34,10 +34,15 @@ const categories: GalleryCategory[] = [
     photos: [],
   },
   {
-    name: "Cuddalore",
-    description: "Photos from ministry meetings and outreach in Cuddalore.",
-    photos: [],
-  },
+  name: "Cuddalore",
+  description: "Photos from ministry meetings and outreach in Cuddalore.",
+  photos: [
+    "/gallery/cuddalore/204f4307-4b83-4b5d-a61e-58ccde8b8cb1.jpg",
+    "/gallery/cuddalore/362b350d-f19d-4ca0-b18d-b0241021e3c7.jpg",
+    "/gallery/cuddalore/000672c8-65b3-467d-996d-db34ada4daa3.jpg",
+    "/gallery/cuddalore/806324bf-6434-4fcc-b3ac-7152f78fcf9b.jpg",
+  ],
+},
   {
     name: "Other Meetings",
     description: "Special meetings, gatherings, conventions, and ministry events.",
