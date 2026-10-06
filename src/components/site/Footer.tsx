@@ -12,7 +12,7 @@ export function Footer() {
   return (
     <footer className="bg-deep text-ivory">
       <div className="mx-auto grid max-w-7xl items-center gap-8 px-5 py-8 lg:grid-cols-[auto_1fr_auto] lg:px-8">
-        <img src={logo} alt="Stanley Suresh Ministries" loading="lazy" className="h-14 w-auto object-contain" />
+        <img src={logo} alt="Stanley Suresh Ministries" loading="lazy" className="h-20 w-auto object-contain" />
         <div>
           <nav className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-ivory/85">
             {links.map(([l, h]) => <a key={l} href={h} className="hover:text-gold">{l}</a>)}
