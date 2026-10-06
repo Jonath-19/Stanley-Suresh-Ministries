@@ -24,7 +24,7 @@ export function Navbar() {
         {/* Ministry Logo */}
         <a
           href="#home"
-          className="flex h-[72px] w-[230px] shrink-0 items-center overflow-hidden"
+          className="flex h-[58px] w-[190px] shrink-0 items-center overflow-hidden lg:h-[72px] lg:w-[230px]"
           aria-label="Stanley Suresh Ministries Home"
         >
           <img
