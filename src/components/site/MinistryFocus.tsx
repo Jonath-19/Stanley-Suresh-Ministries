@@ -90,7 +90,7 @@ export function MinistryFocus() {
       />
     </div>
 
-    <div className="flex min-h-[255px] gap-3 p-5">
+    <div className="flex min-h-[210px] gap-3 p-5 lg:min-h-[255px]">
   <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-gold/70 text-gold">
     <c.icon className="h-5 w-5" />
   </span>
