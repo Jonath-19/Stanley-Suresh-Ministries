@@ -1,5 +1,5 @@
 import { Facebook, Instagram, Youtube } from "lucide-react";
-import logo from "@/assets/logo_banner.png";
+import logo from "@/assets/footerlogo.png";
 import { YOUTUBE_CHANNEL_URL } from "@/lib/youtube";
 
 const links = [
