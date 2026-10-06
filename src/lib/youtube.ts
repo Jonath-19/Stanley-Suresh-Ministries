@@ -107,3 +107,136 @@ export async function fetchLatestVideos(
     })
     .filter(Boolean) as YtVideo[];
 }
+export type YtLiveVideo = {
+  id: string;
+  title: string;
+  thumbnail: string;
+  url: string;
+  publishedAt: string;
+};
+
+export async function fetchLatestLiveVideo(): Promise<YtLiveVideo | null> {
+  if (!API_KEY) {
+    throw new Error("YouTube API key is missing.");
+  }
+
+  if (!CHANNEL_ID) {
+    throw new Error("YouTube channel ID is missing.");
+  }
+
+  /*
+   * First check whether the ministry is LIVE right now.
+   */
+  const liveSearchUrl = new URL(
+    "https://www.googleapis.com/youtube/v3/search"
+  );
+
+  liveSearchUrl.searchParams.set("part", "snippet");
+  liveSearchUrl.searchParams.set("channelId", CHANNEL_ID);
+  liveSearchUrl.searchParams.set("eventType", "live");
+  liveSearchUrl.searchParams.set("type", "video");
+  liveSearchUrl.searchParams.set("maxResults", "1");
+  liveSearchUrl.searchParams.set("order", "date");
+  liveSearchUrl.searchParams.set("key", API_KEY);
+
+  const liveResponse = await fetch(liveSearchUrl.toString());
+
+  if (liveResponse.ok) {
+    const liveData = await liveResponse.json();
+    const liveItem = liveData.items?.[0];
+
+    if (liveItem?.id?.videoId) {
+      const videoId = liveItem.id.videoId;
+
+      return {
+        id: videoId,
+        title: liveItem.snippet?.title ?? "Live Prayer",
+        thumbnail:
+          liveItem.snippet?.thumbnails?.high?.url ??
+          liveItem.snippet?.thumbnails?.medium?.url ??
+          liveItem.snippet?.thumbnails?.default?.url ??
+          `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+        url: `https://www.youtube.com/watch?v=${videoId}`,
+        publishedAt: liveItem.snippet?.publishedAt ?? "",
+      };
+    }
+  }
+
+  /*
+   * If nothing is live right now, find recent completed
+   * livestreams and return the newest one.
+   */
+  const completedSearchUrl = new URL(
+    "https://www.googleapis.com/youtube/v3/search"
+  );
+
+  completedSearchUrl.searchParams.set("part", "snippet");
+  completedSearchUrl.searchParams.set("channelId", CHANNEL_ID);
+  completedSearchUrl.searchParams.set("eventType", "completed");
+  completedSearchUrl.searchParams.set("type", "video");
+  completedSearchUrl.searchParams.set("maxResults", "10");
+  completedSearchUrl.searchParams.set("order", "date");
+  completedSearchUrl.searchParams.set("key", API_KEY);
+
+  const completedResponse = await fetch(completedSearchUrl.toString());
+
+  if (!completedResponse.ok) {
+    return null;
+  }
+
+  const completedData = await completedResponse.json();
+
+  const candidateIds = (completedData.items ?? [])
+    .map((item: any) => item.id?.videoId)
+    .filter(Boolean);
+
+  if (!candidateIds.length) {
+    return null;
+  }
+
+  /*
+   * Check which of those videos actually have livestream metadata.
+   */
+  const detailsUrl = new URL(
+    "https://www.googleapis.com/youtube/v3/videos"
+  );
+
+  detailsUrl.searchParams.set("part", "snippet,liveStreamingDetails");
+  detailsUrl.searchParams.set("id", candidateIds.join(","));
+  detailsUrl.searchParams.set("key", API_KEY);
+
+  const detailsResponse = await fetch(detailsUrl.toString());
+
+  if (!detailsResponse.ok) {
+    return null;
+  }
+
+  const detailsData = await detailsResponse.json();
+
+  const latestStream = (detailsData.items ?? [])
+    .filter((item: any) => item.liveStreamingDetails)
+    .sort(
+      (a: any, b: any) =>
+        new Date(b.snippet?.publishedAt ?? 0).getTime() -
+        new Date(a.snippet?.publishedAt ?? 0).getTime()
+    )[0];
+
+  if (!latestStream) {
+    return null;
+  }
+
+  const videoId = latestStream.id;
+
+  return {
+    id: videoId,
+    title: latestStream.snippet?.title ?? "Latest Live Prayer",
+    thumbnail:
+      latestStream.snippet?.thumbnails?.high?.url ??
+      latestStream.snippet?.thumbnails?.medium?.url ??
+      latestStream.snippet?.thumbnails?.default?.url ??
+      `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+    url: `https://www.youtube.com/watch?v=${videoId}`,
+    publishedAt: latestStream.snippet?.publishedAt ?? "",
+  };
+}
+
