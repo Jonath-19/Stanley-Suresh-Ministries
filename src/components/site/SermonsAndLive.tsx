@@ -7,11 +7,10 @@ import {
 } from "@/lib/youtube";
 
 const sessions = [
-
   {
     day: "Every Saturday",
     name: "Saturday Night Prayer",
-    time: "9:00 PM – 12:00 PM",
+    time: "9:00 PM – 12:00 AM",
   },
 ];
 
@@ -29,7 +28,10 @@ export function Sermons() {
   });
 
   return (
-    <div id="sermons" className="grid items-center gap-6 md:grid-cols-[0.9fr_1.4fr]">
+    <div
+      id="sermons"
+      className="grid items-center gap-6 md:grid-cols-[0.85fr_1.5fr]"
+    >
       {/* Left Content */}
       <div>
         <p className="eyebrow">Sermons</p>
@@ -70,7 +72,7 @@ export function Sermons() {
       </div>
 
       {/* Latest YouTube Videos - 2 x 2 */}
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-4">
         {isLoading
           ? Array.from({ length: 4 }).map((_, index) => (
             <div
@@ -94,6 +96,7 @@ export function Sermons() {
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
+              {/* Dark Gradient */}
               <span className="absolute inset-0 bg-gradient-to-t from-deep/90 via-deep/10 to-transparent" />
 
               {/* Play Button */}
@@ -108,17 +111,24 @@ export function Sermons() {
             </a>
           ))}
 
+        {/* YouTube Error */}
         {isError && (
           <div className="col-span-2 flex aspect-video items-center justify-center rounded-md bg-navy p-6 text-center text-sm text-ivory">
             <div>
-              <p className="font-semibold">Unable to load YouTube videos.</p>
+              <p className="font-semibold">
+                Unable to load YouTube videos.
+              </p>
+
               <p className="mt-2 text-xs text-ivory/70">
-                {error instanceof Error ? error.message : "YouTube request failed."}
+                {error instanceof Error
+                  ? error.message
+                  : "YouTube request failed."}
               </p>
             </div>
           </div>
         )}
 
+        {/* No Videos */}
         {!isLoading && !isError && videos.length === 0 && (
           <div className="col-span-2 flex aspect-video items-center justify-center rounded-md bg-navy p-6 text-center text-sm text-ivory/80">
             Latest videos will appear here from the ministry's YouTube channel.
@@ -139,7 +149,10 @@ export function LivePrayer() {
   const liveUrl = latestLiveVideo?.url ?? YOUTUBE_CHANNEL_URL;
 
   return (
-    <div id="live-prayer" className="md:border-l md:border-border md:pl-8">
+    <div
+      id="live-prayer"
+      className="md:border-l md:border-border md:pl-8"
+    >
       <p className="eyebrow">Live Prayer</p>
 
       <h2 className="mt-2 text-3xl text-navy">
@@ -150,7 +163,8 @@ export function LivePrayer() {
         Prayer continues beyond physical gatherings through online meetings.
       </p>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+      {/* Prayer Schedule */}
+      <div className="mt-4 grid gap-3">
         {sessions.map((session) => (
           <div
             key={session.day}
@@ -159,31 +173,35 @@ export function LivePrayer() {
             <CalendarDays className="h-6 w-6 shrink-0 text-gold" />
 
             <div className="text-xs">
-              <p className="text-sm font-semibold">{session.day}</p>
-              <p className="text-ivory/80">{session.name}</p>
+              <p className="text-sm font-semibold">
+                {session.day}
+              </p>
+
+              <p className="text-ivory/80">
+                {session.name}
+              </p>
+
               <p>{session.time}</p>
-              <p className="text-ivory/80">Online / Zoom</p>
+
+              <p className="text-ivory/80">
+                Online / Zoom
+              </p>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+      {/* Join Live Prayer */}
+      <div className="mt-4">
         <a
           href={liveUrl}
           target="_blank"
           rel="noreferrer"
-          className="btn-gold justify-center !py-2.5"
+          className="btn-gold w-full justify-center !py-2.5"
         >
           {isLoading ? "Loading..." : "Join Live Prayer"}
-          <ArrowRight className="h-3.5 w-3.5" />
-        </a>
 
-        <a
-          href="#prayer-request"
-          className="btn-outline-navy justify-center"
-        >
-          Request Prayer
+          <ArrowRight className="h-3.5 w-3.5" />
         </a>
       </div>
     </div>
@@ -193,7 +211,7 @@ export function LivePrayer() {
 export function SermonsLiveRow() {
   return (
     <section className="bg-ivory">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 lg:grid-cols-[1.7fr_1fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 lg:lg:grid-cols-[2fr_0.85fr] lg:px-8">
         <Sermons />
         <LivePrayer />
       </div>
