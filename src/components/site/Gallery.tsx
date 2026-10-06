@@ -18,10 +18,16 @@ const categories: GalleryCategory[] = [
   ],
 },
   {
-    name: "Baptism",
-    description: "Moments from baptism services and celebrations.",
-    photos: [],
-  },
+  name: "Baptism",
+  description: "Moments from baptism services and celebrations.",
+  photos: [
+    "/gallery/baptism/20220419_103157.jpg",
+    "/gallery/baptism/20220621_113637.jpg",
+    "/gallery/baptism/20230303_105149.jpg",
+    "/gallery/baptism/20230905_113336.jpg",
+    "/gallery/baptism/20240130_110811.jpg",
+  ],
+},
   {
     name: "Community Outreach",
     description: "Moments from community outreach and ministry activities.",
