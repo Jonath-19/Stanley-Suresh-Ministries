@@ -79,10 +79,16 @@ const categories: GalleryCategory[] = [
   ],
 },
   {
-    name: "Vellore",
-    description: "Photos from ministry meetings and gatherings in Vellore.",
-    photos: [],
-  },
+  name: "Vellore",
+  slug: "vellore",
+  description: "Photos from ministry meetings and gatherings in Vellore.",
+  photos: [
+    "/gallery/vellore/20260315_203909.jpg",
+    "/gallery/vellore/20260315_210450.jpg",
+    "/gallery/vellore/20260315_212336.jpg",
+    "/gallery/vellore/20260315_212411.jpg",
+  ],
+},
 ];
 
 export function Gallery() {
