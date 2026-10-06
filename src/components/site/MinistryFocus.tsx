@@ -90,32 +90,30 @@ export function MinistryFocus() {
       />
     </div>
 
-    <div className="flex gap-3 p-5">
-      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-gold/70 text-gold">
-        <c.icon className="h-5 w-5" />
-      </span>
+    <div className="flex min-h-[255px] gap-3 p-5">
+  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-gold/70 text-gold">
+    <c.icon className="h-5 w-5" />
+  </span>
 
-      <div>
-        <h3 className="text-xl">{c.title}</h3>
+  <div className="flex flex-1 flex-col">
+    <h3 className="text-xl">{c.title}</h3>
 
-        <p className="mt-1 text-sm leading-relaxed text-ivory/80">
-          {c.text}
-        </p>
+    <p className="mt-1 text-sm leading-relaxed text-ivory/80">
+      {c.text}
+    </p>
 
-        <button
-          type="button"
-          onClick={() => setSelectedCard(c)}
-          className={`mt-4 cursor-pointer ${
-            c.solid
-              ? "btn-gold !px-5 !py-2"
-              : "btn-outline-gold !py-2"
-          }`}
-        >
-          Learn More
-          <ArrowRight className="h-3.5 w-3.5" />
-        </button>
-      </div>
+    <div className="mt-auto pt-5">
+      <button
+        type="button"
+        onClick={() => setSelectedCard(c)}
+        className="btn-gold flex w-full max-w-[182px] cursor-pointer items-center justify-center gap-2 !px-5 !py-2"
+      >
+        Learn More
+        <ArrowRight className="h-3.5 w-3.5" />
+      </button>
     </div>
+  </div>
+</div>
   </article>
           ))}
         </div>
