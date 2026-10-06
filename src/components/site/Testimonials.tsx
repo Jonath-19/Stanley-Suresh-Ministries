@@ -31,7 +31,7 @@ const testimonies: Testimony[] = [
     title: "A College Door Opened at the Right Time",
     story:
       "For a long time, I struggled with the uncertainty of getting a college admission, after a year filled with exams, stress and many challenges. I shared my situation and received prayer from Pastor Stanley Suresh, trusting God even when I could not see a way forward. I never expected things to change so quickly, but God opened the door at exactly the right time, and I was able to secure a seat and join the final batch. Even though the college fees involved a large amount of money and we had no clear source to arrange it, God made a way for us. I thank the Lord for fulfilling His word and opening this door for my future.",
-    date: "August 2026",
+    date: "September 2026",
     verified: true,
   },
   {
