@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
+
 import {
   ArrowRight,
   CheckCircle2,
@@ -9,7 +10,6 @@ import {
   Quote,
   Send,
   Sparkles,
-  Star,
   X,
 } from "lucide-react";
 
@@ -17,8 +17,6 @@ interface Testimony {
   id: string;
   name: string;
   location: string;
-  category: "all" | "healing" | "deliverance" | "family" | "breakthrough";
-  categoryLabel: string;
   title: string;
   story: string;
   date: string;
@@ -28,13 +26,11 @@ interface Testimony {
 const testimonies: Testimony[] = [
   {
     id: "t1",
-    name: "Samuel Rajendran",
-    location: "Chennai, Tamil Nadu",
-    category: "deliverance",
-    categoryLabel: "Deliverance",
-    title: "Delivered from 3 Years of Severe Anxiety & Fear",
+    name: "Hannah",
+    location: "Chengalpattu, Tamil Nadu",
+    title: "A College Door Opened at the Right Time",
     story:
-      "For nearly three years, I was paralyzed by severe anxiety attacks and sleepless nights that affected my work and peace of mind. During one of Pastor Stanley Suresh's deliverance prayer meetings, as he laid hands and prayed in Jesus' name, I felt a heavy darkness physically lift off my chest. Today, our entire household lives in perfect peace.",
+      "For a long time, I struggled with the uncertainty of getting a college admission, after a year filled with exams, stress and many challenges. I shared my situation and received prayer from Pastor Stanley Suresh, trusting God even when I could not see a way forward. I never expected things to change so quickly, but God opened the door at exactly the right time, and I was able to secure a seat and join the final batch. Even though the college fees involved a large amount of money and we had no clear source to arrange it, God made a way for us. I thank the Lord for fulfilling His word and opening this door for my future.",
     date: "August 2026",
     verified: true,
   },
@@ -42,8 +38,6 @@ const testimonies: Testimony[] = [
     id: "t2",
     name: "Priya & Vinoth",
     location: "Chennai, Tamil Nadu",
-    category: "family",
-    categoryLabel: "Divine Healing",
     title: "Blessed with the Gift of a Child",
     story:
       "Priya and Vinoth had been waiting for many years for the blessing of a child. They came in person to the prayer meetings and received prayer from Pastor Stanley Suresh, continuing to trust God despite the long wait. Today, they have received the precious gift of a child, and their long-awaited prayer has been answered. We give all glory and thanks to God for His faithfulness and for this wonderful blessing in their family.",
@@ -54,8 +48,6 @@ const testimonies: Testimony[] = [
     id: "t3",
     name: "Saranya",
     location: "Coimbatore, Tamil Nadu",
-    category: "healing",
-    categoryLabel: "Divine Healing",
     title: "Freedom from Frequent Seizures",
     story:
       "From birth, my child suffered from frequent seizures, sometimes having seizures nearly 10 times a day. I reached out to Pastor Stanley Suresh for prayer, and he prayed for my child and our family. After prayer, the seizures gradually reduced and have now completely stopped. My child has since joined a special school and is slowly learning to walk and speak. I thank God for His grace and for the wonderful changes He has brought into my child's life.",
@@ -66,8 +58,6 @@ const testimonies: Testimony[] = [
     id: "t4",
     name: "Priya",
     location: "Canada",
-    category: "breakthrough",
-    categoryLabel: "Miracle Blessing",
     title: "First Selected for an Internship",
     story:
       "I was going through a period of uncertainty regarding my internship and was waiting for confirmation after my training. I received prayer from Pastor Stanley Suresh, and I trusted God for the opportunity. I was later told that only 30 people would be selected, and to my great joy, I was the first person selected. I was filled with happiness and immediately wanted to thank God for answering my prayer. I give all glory to the Lord for opening this opportunity for me.",
@@ -78,8 +68,6 @@ const testimonies: Testimony[] = [
     id: "t5",
     name: "J. Nesamani Sonja",
     location: "Uttar Pradesh, India",
-    category: "healing",
-    categoryLabel: "Deliverance",
     title: "Delivered from Severe Stomach Distress",
     story:
       "Last week, I suffered from severe stomach discomfort, excessive gas, bloating and continuous belching for three days, making it difficult for me to eat or even breathe comfortably. I reached out to Pastor Stanley Suresh for prayer, and he prayed for me and instructed me to take oil and pray. During the prayer, I experienced vomiting, followed by a great sense of relief. By the next day, I was completely normal and able to eat regular food again. I give all glory to Jesus for His healing and deliverance.",
@@ -90,9 +78,7 @@ const testimonies: Testimony[] = [
     id: "t6",
     name: "Valarmathi",
     location: "Manipal",
-    category: "healing",
-    categoryLabel: "Spiritual Breakthrough",
-    title: " Answered Prayer for My Husband's Health",
+    title: "Answered Prayer for My Husband's Health",
     story:
       "During my husband's medical check-up, his pulse rate was found to be low at around 52, which caused us great concern. I shared this with Pastor Stanley Suresh, and he prayed for my husband and told me, “Don't worry, sister. You will testify soon.” At the next check-up, his pulse rate had increased to 72, and his echo, ECG and other tests were reported to be normal. The doctor assured us that there was no problem and told us not to be afraid. I thank God for His grace and for answering our prayer.",
     date: "September 2026",
@@ -101,7 +87,6 @@ const testimonies: Testimony[] = [
 ];
 
 export function Testimonials() {
-  const [filter, setFilter] = useState<string>("all");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -110,15 +95,9 @@ export function Testimonials() {
   const [formData, setFormData] = useState({
     full_name: "",
     city: "",
-    category: "healing",
     title: "",
     story: "",
   });
-
-  const filtered =
-    filter === "all"
-      ? testimonies
-      : testimonies.filter((t) => t.category === filter);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -130,7 +109,6 @@ export function Testimonials() {
       {
         full_name: formData.full_name.trim(),
         city: formData.city.trim(),
-        category: formData.category,
         title: formData.title.trim(),
         story: formData.story.trim(),
         status: "pending",
@@ -154,7 +132,6 @@ export function Testimonials() {
     setFormData({
       full_name: "",
       city: "",
-      category: "healing",
       title: "",
       story: "",
     });
@@ -193,34 +170,12 @@ export function Testimonials() {
           </p>
         </div>
 
-        {/* Filter & Action row */}
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-b border-slate/15 pb-6">
-          <div className="flex flex-wrap items-center gap-2">
-            {[
-              { key: "all", label: "All Testimonies" },
-              { key: "deliverance", label: "Deliverance" },
-              { key: "healing", label: "Healing" },
-              { key: "family", label: "Family Restoration" },
-              { key: "breakthrough", label: "Breakthrough" },
-            ].map((f) => (
-              <button
-                key={f.key}
-                type="button"
-                onClick={() => setFilter(f.key)}
-                className={`cursor-pointer rounded-full px-4 py-1.5 text-xs font-semibold tracking-wide transition-all ${filter === f.key
-                  ? "bg-navy text-gold shadow-md ring-1 ring-gold/40"
-                  : "border border-slate/15 bg-white text-slate hover:bg-white/80 hover:text-navy"
-                  }`}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-
+        {/* Action row */}
+        <div className="mt-10 flex justify-end border-b border-slate/15 pb-6">
           <button
             type="button"
             onClick={() => setIsModalOpen(true)}
-            className="btn-gold !px-4 !py-2 text-xs cursor-pointer inline-flex items-center gap-2 shadow-sm"
+            className="btn-gold inline-flex cursor-pointer items-center gap-2 !px-4 !py-2 text-xs shadow-sm"
           >
             <MessageSquare className="h-3.5 w-3.5" />
             Share Your Testimony
@@ -229,28 +184,12 @@ export function Testimonials() {
 
         {/* Testimonials Grid */}
         <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((item) => (
+          {testimonies.map((item) => (
             <div
               key={item.id}
               className="flex flex-col justify-between rounded-2xl border border-gold/20 bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-gold hover:shadow-gold"
             >
               <div>
-                {/* Header: Stars & Category */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1 text-gold">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 fill-gold text-gold"
-                      />
-                    ))}
-                  </div>
-
-                  <span className="rounded-full border border-gold/30 bg-navy px-2.5 py-0.5 text-[11px] font-semibold text-gold">
-                    {item.categoryLabel}
-                  </span>
-                </div>
-
                 {/* Quote Icon & Title */}
                 <div className="mt-4 flex items-start gap-3">
                   <Quote className="h-6 w-6 shrink-0 rotate-180 text-gold/40" />
@@ -270,7 +209,9 @@ export function Testimonials() {
               <div className="mt-6 flex items-center justify-between border-t border-slate/10 pt-4 pl-9">
                 <div>
                   <div className="flex items-center gap-1.5">
-                    <p className="text-xs font-bold text-navy">{item.name}</p>
+                    <p className="text-xs font-bold text-navy">
+                      {item.name}
+                    </p>
 
                     {item.verified && (
                       <CheckCircle2
@@ -322,7 +263,7 @@ export function Testimonials() {
           </button>
         </div>
 
-        {/* Modal: Share Testimony Form */}
+        {/* Modal */}
         {isModalOpen && (
           <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-deep/80 p-4 backdrop-blur-sm animate-in fade-in"
@@ -395,49 +336,25 @@ export function Testimonials() {
                     />
                   </div>
 
-                  {/* City + Category */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-navy">
-                        City / Location
-                      </label>
+                  {/* City / Location */}
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-navy">
+                      City / Location
+                    </label>
 
-                      <input
-                        required
-                        type="text"
-                        placeholder="e.g. Chennai"
-                        value={formData.city}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            city: e.target.value,
-                          })
-                        }
-                        className="mt-1 w-full rounded-md border border-slate/20 px-3.5 py-2 text-sm focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-navy">
-                        Category
-                      </label>
-
-                      <select
-                        value={formData.category}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            category: e.target.value,
-                          })
-                        }
-                        className="mt-1 w-full rounded-md border border-slate/20 px-3 py-2 text-sm focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"
-                      >
-                        <option value="healing">Divine Healing</option>
-                        <option value="deliverance">Deliverance</option>
-                        <option value="family">Family Restoration</option>
-                        <option value="breakthrough">Breakthrough</option>
-                      </select>
-                    </div>
+                    <input
+                      required
+                      type="text"
+                      placeholder="e.g. Chennai"
+                      value={formData.city}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          city: e.target.value,
+                        })
+                      }
+                      className="mt-1 w-full rounded-md border border-slate/20 px-3.5 py-2 text-sm focus:border-gold focus:outline-none focus:ring-1 focus:ring-gold"
+                    />
                   </div>
 
                   {/* Title */}
@@ -493,7 +410,7 @@ export function Testimonials() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn-gold w-full justify-center !py-2.5 text-xs font-bold cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
+                    className="btn-gold w-full cursor-pointer justify-center !py-2.5 text-xs font-bold disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {isSubmitting ? (
                       "Submitting..."
