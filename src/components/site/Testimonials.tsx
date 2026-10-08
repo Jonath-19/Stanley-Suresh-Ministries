@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { supabase } from "@/lib/supabase";
 
 import {
   ArrowRight,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   HeartHandshake,
   MapPin,
   MessageSquare,
@@ -87,11 +89,19 @@ const testimonies: Testimony[] = [
 ];
 
 export function Testimonials() {
+  const testimonialsRef = useRef<HTMLDivElement>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
+  const scrollTestimonials = (direction: "left" | "right") => {
+    testimonialsRef.current?.scrollBy({
+      left: direction === "right" ? 420 : -420,
+      behavior: "smooth",
+    });
+  };
+  
   const [formData, setFormData] = useState({
     full_name: "",
     city: "",
@@ -182,14 +192,83 @@ export function Testimonials() {
           </button>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {testimonies.map((item) => (
-            <div
-              key={item.id}
-              className="flex flex-col justify-between rounded-2xl border border-gold/20 bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-gold hover:shadow-gold"
-            >
-              <div>
+        {/* Testimonials Carousel */}
+<div className="mt-8">
+  <div className="mb-5 flex items-center justify-end gap-2">
+    <button
+      type="button"
+      onClick={() => scrollTestimonials("left")}
+      className="grid h-10 w-10 place-items-center rounded-full border border-gold/30 bg-white text-navy transition hover:border-gold hover:bg-gold/10"
+      aria-label="Previous testimony"
+    >
+      <ChevronLeft className="h-5 w-5" />
+    </button>
+
+    <button
+      type="button"
+      onClick={() => scrollTestimonials("right")}
+      className="grid h-10 w-10 place-items-center rounded-full border border-gold/30 bg-white text-navy transition hover:border-gold hover:bg-gold/10"
+      aria-label="Next testimony"
+    >
+      <ChevronRight className="h-5 w-5" />
+    </button>
+  </div>
+
+  <div
+    ref={testimonialsRef}
+    className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+  >
+    {testimonies.map((item) => (
+      <div
+        key={item.id}
+        className="flex min-h-[430px] flex-none snap-start flex-col justify-between rounded-2xl border border-gold/20 bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-gold hover:shadow-gold sm:min-h-[400px] md:basis-[calc((100%-1.5rem)/2)] lg:basis-[calc((100%-3rem)/3)]"
+      >
+        <div>
+          {/* Quote Icon & Title */}
+          <div className="mt-4 flex items-start gap-3">
+            <Quote className="h-6 w-6 shrink-0 rotate-180 text-gold/40" />
+
+            <h3 className="text-base font-bold leading-snug text-navy">
+              {item.title}
+            </h3>
+          </div>
+
+          {/* Story */}
+          <p className="mt-3 pl-9 text-xs leading-relaxed text-slate sm:text-sm">
+            {item.story}
+          </p>
+        </div>
+
+        {/* Author footer */}
+        <div className="mt-6 flex items-center justify-between border-t border-slate/10 pt-4 pl-9">
+          <div>
+            <div className="flex items-center gap-1.5">
+              <p className="text-xs font-bold text-navy">
+                {item.name}
+              </p>
+
+              {item.verified && (
+                <CheckCircle2
+                  className="h-3.5 w-3.5 text-emerald-600"
+                  aria-label="Verified Testimony"
+                />
+              )}
+            </div>
+
+            <div className="flex items-center gap-1 text-[11px] text-slate/80">
+              <MapPin className="h-3 w-3 text-gold" />
+              {item.location}
+            </div>
+          </div>
+
+          <span className="text-[10px] font-medium text-slate/60">
+            {item.date}
+          </span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
                 {/* Quote Icon & Title */}
                 <div className="mt-4 flex items-start gap-3">
                   <Quote className="h-6 w-6 shrink-0 rotate-180 text-gold/40" />
