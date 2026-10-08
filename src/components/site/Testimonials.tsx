@@ -96,11 +96,20 @@ export function Testimonials() {
   const [submitError, setSubmitError] = useState("");
 
   const scrollTestimonials = (direction: "left" | "right") => {
-    testimonialsRef.current?.scrollBy({
-      left: direction === "right" ? 420 : -420,
-      behavior: "smooth",
-    });
-  };
+  const container = testimonialsRef.current;
+  if (!container) return;
+
+  const card = container.firstElementChild as HTMLElement | null;
+  if (!card) return;
+
+  const gap = 24;
+  const amount = card.offsetWidth + gap;
+
+  container.scrollBy({
+    left: direction === "right" ? amount : -amount,
+    behavior: "smooth",
+  });
+};
   
   const [formData, setFormData] = useState({
     full_name: "",
@@ -221,20 +230,20 @@ export function Testimonials() {
     {testimonies.map((item) => (
       <div
         key={item.id}
-        className="flex min-h-[430px] flex-none snap-start flex-col justify-between rounded-2xl border border-gold/20 bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-gold hover:shadow-gold sm:min-h-[400px] md:basis-[calc((100%-1.5rem)/2)] lg:basis-[calc((100%-3rem)/3)]"
+        className="flex w-full max-w-full min-h-[380px] flex-none snap-start flex-col justify-between overflow-hidden rounded-2xl border border-gold/20 bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-gold hover:shadow-gold sm:min-h-[400px] md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)]"
       >
         <div>
           {/* Quote Icon & Title */}
           <div className="mt-4 flex items-start gap-3">
             <Quote className="h-6 w-6 shrink-0 rotate-180 text-gold/40" />
 
-            <h3 className="text-base font-bold leading-snug text-navy">
+            <h3 className="break-words text-base font-bold leading-snug text-navy">
               {item.title}
             </h3>
           </div>
 
           {/* Story */}
-          <p className="mt-3 pl-9 text-xs leading-relaxed text-slate sm:text-sm">
+          <p className="mt-3 break-words pl-9 text-xs leading-relaxed text-slate sm:text-sm">
             {item.story}
           </p>
         </div>
