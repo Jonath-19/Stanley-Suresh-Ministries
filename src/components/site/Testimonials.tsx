@@ -313,6 +313,7 @@ export function Testimonials() {
             </div>
           ))}
         </div>
+      </div>
 
         {/* Bottom encouragement callout */}
         <div className="mt-12 flex flex-col items-center justify-between gap-6 rounded-2xl border border-gold/30 bg-white p-6 shadow-card md:flex-row md:p-8">
