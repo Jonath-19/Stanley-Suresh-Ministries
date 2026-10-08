@@ -269,51 +269,6 @@ export function Testimonials() {
     ))}
   </div>
 </div>
-                {/* Quote Icon & Title */}
-                <div className="mt-4 flex items-start gap-3">
-                  <Quote className="h-6 w-6 shrink-0 rotate-180 text-gold/40" />
-
-                  <h3 className="text-base font-bold leading-snug text-navy">
-                    {item.title}
-                  </h3>
-                </div>
-
-                {/* Story */}
-                <p className="mt-3 pl-9 text-xs leading-relaxed text-slate sm:text-sm">
-                  {item.story}
-                </p>
-              </div>
-
-              {/* Author footer */}
-              <div className="mt-6 flex items-center justify-between border-t border-slate/10 pt-4 pl-9">
-                <div>
-                  <div className="flex items-center gap-1.5">
-                    <p className="text-xs font-bold text-navy">
-                      {item.name}
-                    </p>
-
-                    {item.verified && (
-                      <CheckCircle2
-                        className="h-3.5 w-3.5 text-emerald-600"
-                        aria-label="Verified Testimony"
-                      />
-                    )}
-                  </div>
-
-                  <div className="flex items-center gap-1 text-[11px] text-slate/80">
-                    <MapPin className="h-3 w-3 text-gold" />
-                    {item.location}
-                  </div>
-                </div>
-
-                <span className="text-[10px] font-medium text-slate/60">
-                  {item.date}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
 
         {/* Bottom encouragement callout */}
         <div className="mt-12 flex flex-col items-center justify-between gap-6 rounded-2xl border border-gold/30 bg-white p-6 shadow-card md:flex-row md:p-8">
