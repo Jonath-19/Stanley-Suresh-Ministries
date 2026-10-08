@@ -10,7 +10,7 @@ const sessions = [
   {
     day: "Every Saturday",
     name: "Saturday Night Prayer",
-    time: "9:00 PM – 12:00 AM",
+    time: "9:00 PM – 10:00 PM",
   },
 ];
 
