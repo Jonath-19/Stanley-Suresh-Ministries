@@ -17,6 +17,7 @@ const links = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("Home");
+  const [visible, setVisible] = useState(true);
   const location = useLocation();
   useEffect(() => {
     if (location.pathname === "/about") {
@@ -68,9 +69,36 @@ export function Navbar() {
 
   return () => observer.disconnect();
 }, [location.pathname]);
+  useEffect(() => {
+  let lastScrollY = window.scrollY;
+
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    if (open || currentScrollY < 80) {
+      setVisible(true);
+    } else if (currentScrollY > lastScrollY + 5) {
+      setVisible(false);
+    } else if (currentScrollY < lastScrollY - 5) {
+      setVisible(true);
+    }
+
+    lastScrollY = currentScrollY;
+  };
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, [open]);
 
   return (
-    <header className="glass-nav fixed inset-x-0 top-0 z-50">
+    <header
+      className={`glass-nav fixed inset-x-0 top-0 z-50 transition-transform duration-300 ${
+        visible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 lg:px-8">
 
         {/* Ministry Logo */}
