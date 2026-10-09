@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate min-h-[760px] overflow-hidden bg-deep lg:min-h-[820px]"
+      className="relative isolate min-h-[720px] overflow-hidden bg-deep sm:min-h-[760px] lg:min-h-[820px]"
     >
       {/* Complete cinematic hero artwork */}
       <img
@@ -13,7 +13,7 @@ export function Hero() {
         alt=""
         width={1920}
         height={1080}
-        className="absolute inset-0 -z-30 h-full w-full object-cover object-center"
+        className="absolute inset-0 -z-30 h-full w-full object-cover object-[62%_center] sm:object-center"
       />
 
       {/* Dark overlay for readable text */}
@@ -29,20 +29,21 @@ export function Hero() {
           z-10
           mx-auto
           flex
-          min-h-[760px]
+          min-h-[720px]
           max-w-7xl
           flex-col
           justify-center
           px-5
-          pb-40
-          pt-32
-          md:pb-24
+          pb-32
+          pt-28
+          sm:min-h-[760px]
+          sm:pb-24
+          md:px-8
           lg:min-h-[820px]
-          lg:px-8
         "
       >
         <div className="max-w-xl">
-          <h1 className="text-5xl leading-[1.02] text-ivory sm:text-6xl lg:text-7xl">
+          <h1 className="text-[2.65rem] leading-[1.04] text-ivory sm:text-6xl lg:text-7xl">
             Hope. Prayer.
             <span className="mt-1 block text-gold-gradient">
               A Deeper Walk
@@ -70,7 +71,7 @@ export function Hero() {
             </a>
           </div>
 
-          <div className="mt-10 flex items-center gap-4 font-display text-xs tracking-[0.3em] text-ivory/85">
+          <div className="mt-8 flex max-w-full flex-wrap items-center gap-x-3 gap-y-2 font-display text-[10px] tracking-[0.15em] text-ivory/85 sm:mt-10 sm:gap-4 sm:text-xs sm:tracking-[0.3em]">
             <span className="h-px w-10 bg-gold" />
             DELIVERANCE
             <span className="text-gold">•</span>
