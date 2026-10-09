@@ -71,7 +71,7 @@ export function Hero() {
             </a>
           </div>
 
-          <div className="mt-5 flex max-w-full flex-wrap items-center gap-x-2 gap-y-2 font-display text-[9px] tracking-[0.1em] text-ivory/85 sm:mt-10 sm:gap-4 sm:text-xs sm:tracking-[0.3em]">
+          <div className="mt-5 flex max-w-[290px] flex-wrap items-center gap-x-2 gap-y-2 font-display text-[9px] tracking-[0.05em] text-ivory/85 sm:mt-10 sm:max-w-none sm:gap-4 sm:text-xs sm:tracking-[0.3em]">
             <span className="h-px w-10 bg-gold" />
             DELIVERANCE
             <span className="text-gold">•</span>
