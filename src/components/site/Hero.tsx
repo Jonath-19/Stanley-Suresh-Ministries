@@ -27,7 +27,7 @@ export function Hero() {
       />
 
       {/* Dark overlay for readable text */}
-      <div className="absolute inset-0 -z-20 bg-gradient-to-b from-deep/75 via-deep/25 to-deep/65 lg:bg-gradient-to-r lg:from-deep/45 lg:via-deep/15 lg:to-transparent" />
+      <div className="absolute inset-0 -z-20 bg-gradient-to-b from-deep/55 via-deep/10 to-deep/35 lg:bg-gradient-to-r lg:from-deep/45 lg:via-deep/15 lg:to-transparent" />
 
       {/* Subtle bottom fade */}
       <div className="absolute inset-x-0 bottom-0 -z-20 h-48 bg-gradient-to-t from-deep/75 via-transparent to-transparent" />
@@ -36,13 +36,13 @@ export function Hero() {
       <div
         className="
           relative z-10 mx-auto flex min-h-[900px] max-w-7xl
-          flex-col justify-start px-5 pb-36 pt-12
+          flex-col justify-start px-5 pb-36 pt-28
           sm:px-6 sm:pt-16
           lg:min-h-[820px] lg:justify-center lg:px-8 lg:pb-24 lg:pt-32
         "
 
       >
-        <div className="max-w-xl lg:max-w-xl">
+        <div className="max-w-[340px] lg:max-w-xl">
           <h1 className="text-[2.65rem] leading-[1.04] text-ivory sm:text-6xl lg:text-7xl">
             Hope. Prayer.
             <span className="mt-1 block text-gold-gradient">
