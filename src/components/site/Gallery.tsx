@@ -141,7 +141,7 @@ export function Gallery() {
           {categories.map((category) => (
             <article
               key={category.name}
-              className="group relative rounded-2xl border border-slate/15 bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-xl"
+              className="group relative overflow-hidden rounded-2xl border border-slate/15 bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/40"
             >
                             {/* Cover Photo */}
               <button
@@ -150,7 +150,7 @@ export function Gallery() {
                 className="block w-full cursor-pointer text-left"
                 aria-label={`Open ${category.name} gallery`}
               >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-navy">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-navy">
                   <img
                     src={category.photos[0]}
                     alt={`${category.name} ministry gallery cover`}
