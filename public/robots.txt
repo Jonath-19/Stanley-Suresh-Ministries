@@ -16,4 +16,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://stanleysureshministries.in/sitemap.xml
+Sitemap: https://www.stanleysureshministries.in/sitemap.xml
