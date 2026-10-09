@@ -36,8 +36,8 @@ export function Hero() {
       <div
         className="
           relative z-10 mx-auto flex min-h-[900px] max-w-7xl
-          flex-col justify-start px-5 pb-36 pt-8
-          sm:px-6 sm:pt-12
+          flex-col justify-start px-5 pb-36 pt-16
+          sm:px-6 sm:pt-16
           lg:min-h-[820px] lg:justify-center lg:px-8 lg:pb-24 lg:pt-32
         "
 
