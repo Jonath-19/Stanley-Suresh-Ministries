@@ -137,41 +137,42 @@ export function Gallery() {
         </div>
 
         {/* Category Grid */}
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:grid-cols-4">
           {categories.map((category) => (
             <article
               key={category.name}
               className="group relative rounded-2xl border border-slate/15 bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-xl"
             >
-              {/* Top row */}
-              <div className="flex items-start justify-between">
-                <div className="grid h-14 w-14 place-items-center rounded-xl bg-navy text-gold">
-                  <Folder className="h-7 w-7" />
-                </div>
-
-                <span className="rounded-full border border-slate/15 bg-soft-blue/30 px-3 py-1 text-[11px] font-semibold text-navy">
-                  {category.photos.length}{" "}
-                  {category.photos.length === 1 ? "Photo" : "Photos"}
-                </span>
-              </div>
-
-              {/* Content */}
-              <h3 className="mt-5 text-xl font-semibold text-navy">
-                {category.name}
-              </h3>
-
-              <p className="mt-2 min-h-[48px] text-sm leading-relaxed text-slate">
-                {category.description}
-              </p>
-
-              {/* Button */}
+                            {/* Cover Photo */}
               <button
                 type="button"
                 onClick={() => setSelectedCategory(category)}
-                className="mt-6 inline-flex cursor-pointer items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold transition-colors hover:text-navy"
+                className="block w-full cursor-pointer text-left"
+                aria-label={`Open ${category.name} gallery`}
               >
-                Open Gallery
-                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+                <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-navy">
+                  <img
+                    src={category.photos[0]}
+                    alt={`${category.name} ministry gallery cover`}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/10 to-transparent" />
+
+                  <span className="absolute right-2 top-2 rounded-full border border-white/30 bg-navy/80 px-2 py-1 text-[10px] font-semibold text-white sm:right-3 sm:top-3 sm:text-xs">
+                    {category.photos.length} Photos
+                  </span>
+
+                  <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4">
+                    <h3 className="text-sm font-semibold leading-snug text-white sm:text-lg">
+                      {category.name}
+                    </h3>
+                    <span className="mt-1 inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-gold sm:text-xs">
+                      View Gallery
+                      <ArrowRight className="h-3 w-3" />
+                    </span>
+                  </div>
+                </div>
               </button>
             </article>
           ))}
