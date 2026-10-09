@@ -43,7 +43,7 @@ export function Hero() {
 
       >
         <div className="max-w-[340px] lg:max-w-xl">
-          <h1 className="text-[2.65rem] leading-[1.04] text-ivory sm:text-6xl lg:text-7xl">
+          <h1 className="text-[2.35rem] leading-[1.06] text-ivory sm:text-6xl lg:text-7xl">
             Hope. Prayer.
             <span className="mt-1 block text-gold-gradient">
               A Deeper Walk
@@ -53,13 +53,13 @@ export function Hero() {
             </span>
           </h1>
 
-          <p className="mt-6 max-w-md text-base leading-relaxed text-ivory/85">
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-ivory/90 sm:mt-6 sm:text-base">
             Welcome to Stanley Suresh Ministries — a ministry serving people
             through prayer, deliverance, Gospel ministry, spiritual
             encouragement, and community outreach.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-4">
+          <div className="mt-5 flex flex-wrap gap-3 sm:mt-8 sm:gap-4">
             <a href="#prayer-request" className="btn-gold">
               Request Prayer
               <ArrowRight className="h-4 w-4" />
@@ -71,7 +71,7 @@ export function Hero() {
             </a>
           </div>
 
-          <div className="mt-8 flex max-w-full flex-wrap items-center gap-x-3 gap-y-2 font-display text-[10px] tracking-[0.15em] text-ivory/85 sm:mt-10 sm:gap-4 sm:text-xs sm:tracking-[0.3em]">
+          <div className="mt-5 flex max-w-full flex-wrap items-center gap-x-2 gap-y-2 font-display text-[9px] tracking-[0.1em] text-ivory/85 sm:mt-10 sm:gap-4 sm:text-xs sm:tracking-[0.3em]">
             <span className="h-px w-10 bg-gold" />
             DELIVERANCE
             <span className="text-gold">•</span>
