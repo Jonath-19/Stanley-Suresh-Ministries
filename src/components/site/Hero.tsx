@@ -1,5 +1,6 @@
 import { ArrowRight, PlayCircle } from "lucide-react";
 import hero from "@/assets/hero-cinematic.jpg";
+import heroMobile from "@/assets/hero-cinematic-mobile.png";
 
 export function Hero() {
   return (
@@ -8,16 +9,24 @@ export function Hero() {
       className="relative isolate min-h-[720px] overflow-hidden bg-deep sm:min-h-[760px] lg:min-h-[820px]"
     >
       {/* Complete cinematic hero artwork */}
+      {/* Mobile hero artwork */}
+      <img
+        src={heroMobile}
+        alt=""
+        className="absolute inset-0 -z-30 h-full w-full object-cover object-center lg:hidden"
+      />
+
+      {/* Desktop hero artwork */}
       <img
         src={hero}
         alt=""
         width={1920}
         height={1080}
-        className="absolute inset-0 -z-30 h-full w-full object-cover object-[62%_center] sm:object-center"
+        className="absolute inset-0 -z-30 hidden h-full w-full object-cover object-center lg:block"
       />
 
       {/* Dark overlay for readable text */}
-      <div className="absolute inset-0 -z-20 bg-gradient-to-r from-deep/45 via-deep/15 to-transparent" />
+      <div className="absolute inset-0 -z-20 bg-gradient-to-b from-deep/75 via-deep/25 to-deep/65 lg:bg-gradient-to-r lg:from-deep/45 lg:via-deep/15 lg:to-transparent" />
 
       {/* Subtle bottom fade */}
       <div className="absolute inset-x-0 bottom-0 -z-20 h-48 bg-gradient-to-t from-deep/75 via-transparent to-transparent" />
