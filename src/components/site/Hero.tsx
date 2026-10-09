@@ -6,7 +6,8 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate min-h-[720px] overflow-hidden bg-deep sm:min-h-[760px] lg:min-h-[820px]"
+      className="relative isolate min-h-[900px] overflow-hidden bg-deep lg:min-h-[820px]"
+
     >
       {/* Complete cinematic hero artwork */}
       {/* Mobile hero artwork */}
@@ -34,24 +35,14 @@ export function Hero() {
       {/* HERO CONTENT */}
       <div
         className="
-          relative
-          z-10
-          mx-auto
-          flex
-          min-h-[720px]
-          max-w-7xl
-          flex-col
-          justify-center
-          px-5
-          pb-32
-          pt-28
-          sm:min-h-[760px]
-          sm:pb-24
-          md:px-8
-          lg:min-h-[820px]
+          relative z-10 mx-auto flex min-h-[900px] max-w-7xl
+          flex-col justify-start px-5 pb-36 pt-12
+          sm:px-6 sm:pt-16
+          lg:min-h-[820px] lg:justify-center lg:px-8 lg:pb-24 lg:pt-32
         "
+
       >
-        <div className="max-w-xl">
+        <div className="max-w-xl lg:max-w-xl">
           <h1 className="text-[2.65rem] leading-[1.04] text-ivory sm:text-6xl lg:text-7xl">
             Hope. Prayer.
             <span className="mt-1 block text-gold-gradient">
