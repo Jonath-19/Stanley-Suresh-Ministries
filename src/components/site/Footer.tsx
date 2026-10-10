@@ -82,15 +82,21 @@ export function Footer() {
       </div>
 
       {/* Bottom Footer */}
-      <div className="border-t border-ivory/10">
-        <div className="mx-auto flex max-w-7xl flex-wrap justify-end gap-4 px-5 py-3 text-[11px] text-ivory/60 lg:px-8">
-          <a href="#" className="hover:text-gold">
-            Privacy Policy
-          </a>
+      
+  <a
+    href="/privacy-policy"
+    className="hover:text-gold"
+>
+  Privacy Policy
+</a>
 
-          <a href="#" className="hover:text-gold">
-            Terms &amp; Conditions
-          </a>
+<a
+  href="/terms-and-conditions"
+  className="hover:text-gold"
+>
+  Terms &amp; Conditions
+</a>
+
 
           <span>
             © {new Date().getFullYear()} Stanley Suresh Ministries. All Rights
