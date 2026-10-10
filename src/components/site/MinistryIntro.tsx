@@ -153,6 +153,15 @@ export function MinistryIntro() {
             </div>
           ))}
         </div>
+        <div className="flex justify-center py-12">
+  <a
+    href="/"
+    className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-6 py-3 text-sm font-medium text-deep transition-colors hover:bg-gold hover:text-deep"
+  >
+    ← Back to Home
+  </a>
+</div>
+
 
         {/* Scripture Citation Banner */}
         <div className="mt-12 overflow-hidden rounded-2xl bg-navy-gradient p-8 text-center text-ivory shadow-card ring-1 ring-gold/30">
@@ -168,11 +177,3 @@ export function MinistryIntro() {
     </section>
   );
 }
-<div className="flex justify-center py-12">
-  <a
-    href="/"
-    className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-6 py-3 text-sm font-medium text-deep transition-colors hover:bg-gold hover:text-deep"
-  >
-    ← Back to Home
-  </a>
-</div>
