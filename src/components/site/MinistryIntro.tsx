@@ -168,3 +168,11 @@ export function MinistryIntro() {
     </section>
   );
 }
+<div className="flex justify-center py-12">
+  <a
+    href="/"
+    className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-6 py-3 text-sm font-medium text-deep transition-colors hover:bg-gold hover:text-deep"
+  >
+    ← Back to Home
+  </a>
+</div>
