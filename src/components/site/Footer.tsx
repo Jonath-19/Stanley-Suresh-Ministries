@@ -1,3 +1,4 @@
+
 import { Facebook, Instagram, Youtube } from "lucide-react";
 import logo from "@/assets/footerlogo.png";
 import { YOUTUBE_CHANNEL_URL } from "@/lib/youtube";
@@ -46,7 +47,6 @@ export function Footer() {
 
         {/* Social Media */}
         <div className="flex gap-3">
-          {/* YouTube */}
           <a
             href={YOUTUBE_CHANNEL_URL}
             target="_blank"
@@ -57,7 +57,6 @@ export function Footer() {
             <Youtube className="h-4 w-4" />
           </a>
 
-          {/* Facebook */}
           <a
             href="https://www.facebook.com/share/1KFjuu2hrT/"
             target="_blank"
@@ -68,7 +67,6 @@ export function Footer() {
             <Facebook className="h-4 w-4" />
           </a>
 
-          {/* Instagram */}
           <a
             href="https://www.instagram.com/stanley.suresh.566?stkn=cm1zbm5qcmRpYnVo"
             target="_blank"
@@ -82,21 +80,17 @@ export function Footer() {
       </div>
 
       {/* Bottom Footer */}
-      
-  <a
-    href="/privacy-policy"
-    className="hover:text-gold"
->
-  Privacy Policy
-</a>
+      <div className="border-t border-ivory/15">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-4 text-xs text-ivory/70 sm:flex-row lg:px-8">
+          <div className="flex flex-wrap justify-center gap-5">
+            <a href="/privacy-policy" className="hover:text-gold">
+              Privacy Policy
+            </a>
 
-<a
-  href="/terms-and-conditions"
-  className="hover:text-gold"
->
-  Terms &amp; Conditions
-</a>
-
+            <a href="/terms-and-conditions" className="hover:text-gold">
+              Terms &amp; Conditions
+            </a>
+          </div>
 
           <span>
             © {new Date().getFullYear()} Stanley Suresh Ministries. All Rights
