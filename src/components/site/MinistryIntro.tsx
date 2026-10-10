@@ -106,8 +106,10 @@ export function MinistryIntro() {
                 Learn More <ArrowRight className="h-4 w-4" />
               </a>
 
-              <a href="#prayer-request" className="btn-outline-navy">
-                Request Personal Prayer
+              <a href="/#prayer-request"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-semibold text-navy transition-colors hover:bg-gold/90">
+                Request Prayer
+                <ArrowRight className="h-4 w-4" />
               </a>
             </div>
           </div>
