@@ -1,4 +1,4 @@
-```tsx
+
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -329,4 +329,4 @@ export default function AboutPage() {
 export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
-```
+
