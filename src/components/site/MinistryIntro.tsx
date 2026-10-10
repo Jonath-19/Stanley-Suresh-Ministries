@@ -169,7 +169,7 @@ export function MinistryIntro() {
             <span aria-hidden="true">←</span>
             Back to Home
           </a>
-        </div>
+        
       </div>
     </section>
   );
