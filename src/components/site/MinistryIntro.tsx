@@ -212,18 +212,6 @@ export function MinistryIntro() {
             — Isaiah 61:1
           </cite>
         </div>
-
-        {/* Back to Home Button */}
-        <div className="flex justify-center py-12">
-          <a
-            href="/"
-            className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-6 py-3 text-sm font-medium text-navy transition-colors hover:bg-gold hover:text-navy"
-          >
-            <span aria-hidden="true">←</span>
-            Back to Home
-          </a>
-        </div>
-      </div>
     </section>
   );
 }
